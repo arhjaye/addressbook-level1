@@ -133,6 +133,11 @@ public class AddressBook {
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
+    private static final String COMMAND_GOODBYE_WORD = "goodbye";
+    private static final String COMMAND_GOODBYE_DESC = "Prints Goodbye World";
+    private static final String COMMAND_GOODBYE_EXAMPLE = COMMAND_GOODBYE_WORD;
+    private static final String PRINT_GOODBYE = "Goodbye World! D:<";
+
     private static final String DIVIDER = "===================================================";
 
 
@@ -381,12 +386,23 @@ public class AddressBook {
             return executeClearAddressBook();
         case COMMAND_HELP_WORD:
             return getUsageInfoForAllCommands();
+        case COMMAND_GOODBYE_WORD:
+            return printGoodbye();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
         default:
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
     }
+    /**
+     * prints "goodbye world"
+     *
+     * @return string"goodbye world"
+     */
+    private static String printGoodbye() {
+        return PRINT_GOODBYE;// else case: no parameters
+    }
+
 
     /**
      * Splits raw user input into command word and command arguments string
@@ -1088,7 +1104,8 @@ public class AddressBook {
                 + getUsageInfoForDeleteCommand() + LS
                 + getUsageInfoForClearCommand() + LS
                 + getUsageInfoForExitCommand() + LS
-                + getUsageInfoForHelpCommand();
+                + getUsageInfoForHelpCommand() + LS
+                + getUsageInfoForGoodbyeCommand();
     }
 
     /** Returns the string for showing 'add' command usage instruction */
@@ -1136,6 +1153,10 @@ public class AddressBook {
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE);
     }
 
+    private static String getUsageInfoForGoodbyeCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_GOODBYE_WORD, COMMAND_GOODBYE_DESC)
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_GOODBYE_EXAMPLE);
+    }
 
     /*
      * ============================
