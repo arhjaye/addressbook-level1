@@ -105,7 +105,6 @@
 
   # print goodbye world
   goodbye
-  list
 
 ##########################################################
 # test exit command
